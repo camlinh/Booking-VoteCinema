@@ -28,7 +28,8 @@ class CreateFilmsTable extends Migration {
 			$table->string('age');
 			$table->string('detail');
 			$table->decimal('price_film');
-			$table->string('vote_number');
+			$table->integer('vote_number');
+			$table->integer('register_number');
 			$table->timestamps();
 		});
 	}

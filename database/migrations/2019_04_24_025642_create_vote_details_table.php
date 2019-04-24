@@ -4,23 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 /**
- * Class CreateVotesTable.
+ * Class CreateVoteDetailsTable.
  */
-class CreateVotesTable extends Migration {
+class CreateVoteDetailsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('votes', function (Blueprint $table) {
+		Schema::create('vote_details', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name_vote');
 			$table->integer('id_user')->unsigned();
 			$table->foreign('id_user')->references('id')->on('users');
-			$table->integer('status_vote');
-			$table->string('detail');
-			$table->date('dead_line');
+			$table->integer('id_film')->unsigned();
+			$table->foreign('id_film')->references('id')->on('films');
+			$table->integer('id_vote')->unsigned();
+			$table->foreign('id_vote')->references('id')->on('votes');
+
 			$table->timestamps();
 		});
 	}
@@ -31,6 +32,6 @@ class CreateVotesTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('votes');
+		Schema::drop('vote_details');
 	}
 }
